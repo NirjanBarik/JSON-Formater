@@ -87,7 +87,33 @@ This will start both the client (Vite) and the server (Express) concurrently.
 
 ---
 
+## 🌐 Deployment
+
+### Backend (Render)
+1. Create a new **Web Service** on [Render](https://render.com/).
+2. Connect your GitHub repository.
+3. Set the following configurations:
+   - **Root Directory**: `server`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+4. Add **Environment Variables**:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+
+### Frontend (Vercel)
+1. Create a new project on [Vercel](https://vercel.com/).
+2. Connect your GitHub repository.
+3. Set the following configurations:
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `client`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+4. Add **Environment Variable**:
+   - `VITE_API_URL`: The URL of your deployed Render backend (e.g., `https://your-api.onrender.com/api`).
+
+---
+
 ## 📸 Screenshots
+
 
 *(Add your own screenshots here)*
 
