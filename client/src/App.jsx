@@ -9,7 +9,9 @@ import {
   FileJson, 
   Clock, 
   Save,
-  AlertCircle
+  AlertCircle,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -21,6 +23,16 @@ function App() {
   const [stats, setStats] = useState({ chars: 0, lines: 0, size: '0 bytes' });
   const [history, setHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    document.body.className = theme === 'light' ? 'light-mode' : '';
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   useEffect(() => {
     fetchHistory();
@@ -162,8 +174,15 @@ function App() {
     <div className="app-layout">
       <div className="container">
         <header>
-          <h1><Zap size={32} style={{ verticalAlign: 'middle', marginRight: '10px' }} /> JSON Formatter & Validator</h1>
-          <p className="subtitle">MERN Edition - Format, validate, and save snippets</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <h1><Zap size={32} style={{ verticalAlign: 'middle', marginRight: '10px' }} /> JSON Formatter & Validator</h1>
+              <p className="subtitle">MERN Edition - Format, validate, and save snippets</p>
+            </div>
+            <button className="theme-toggle" onClick={toggleTheme} title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </div>
         </header>
 
         <div className="main-content">

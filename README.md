@@ -1,4 +1,4 @@
-# ⚡ JSON Formatter & Validator (MERN)
+# ⚡ JSON Formatter & Validator 
 
 ![Project Banner](./assets/banner.png)
 
@@ -15,7 +15,8 @@ A professional, full-stack JSON utility tool built with the MERN stack. Format, 
 - 🕒 **History Tracking**: Sidebar history to quickly reload or delete previous snippets.
 - 📊 **Real-time Stats**: Track character count, line count, and data size as you type.
 - 📋 **One-click Copy**: Copy formatted/minified output directly to your clipboard.
-- 🎨 **Modern UI**: Sleek, dark-themed responsive design built with React and Vanilla CSS.
+- 🌓 **Dark/Light Mode**: Toggle between premium dark and light themes with smooth transitions and persistence.
+- 🎨 **Modern UI**: Sleek, responsive design built with React and Vanilla CSS, supporting multiple themes.
 
 ---
 
@@ -77,6 +78,20 @@ This will start both the client (Vite) and the server (Express) concurrently.
 
 ---
 
+---
+
+## 🆕 Recent Updates
+
+### 🌓 Dark/Light Mode Toggle
+We've added a highly requested theme toggle feature!
+- **Smooth Transitions**: Enjoy a premium feel with 0.3s ease transitions between themes.
+- **Preference Persistence**: Your choice is saved in `localStorage`, so it's remembered every time you visit.
+- **Optimized Visibility**: Both themes are carefully crafted for maximum readability and eye comfort.
+
+![Theme Toggle Demo](./assets/theme-toggle-demo.webp)
+
+---
+
 ## 🖥️ Usage
 
 1. Paste your JSON data into the **Input** panel.
@@ -114,8 +129,11 @@ This will start both the client (Vite) and the server (Express) concurrently.
 
 ## 📸 Screenshots
 
+### Dark Mode
+![Dark Mode Screenshot](./assets/dark-mode.png)
 
-*(Add your own screenshots here)*
+### Light Mode
+![Light Mode Screenshot](./assets/light-mode.png)
 
 ---
 
@@ -139,6 +157,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📧 Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+Email - nirjanbarik1@gmail.com
 
-Project Link: [https://github.com/your-username/json-formatter-mern](https://github.com/your-username/json-formatter-mern)
+Project Link: [https://github.com/NirjanBarik/json-formatter-mern](https://github.com/NirjanBarik/json-formatter-mern)
