@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const Snippet = require('./models/Snippet');
@@ -50,6 +51,22 @@ app.delete('/api/snippets/:id', async (req, res) => {
   }
 });
 
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+  });
+} else {
+  // Welcome route for development or when frontend is hosted elsewhere
+  app.get('/', (req, res) => {
+    res.send('JSON Formatter API is running...');
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
