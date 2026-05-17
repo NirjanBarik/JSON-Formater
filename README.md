@@ -1,147 +1,123 @@
-# ⚡ JSON Formatter & Validator 
+# ⚡ JSONfy - Premium JSON Formatter & Validator
 
-![Project Banner](./assets/banner.png)
+![JSONfy Redesigned Console](./assets/dashboard-redesign.png)
 
-A professional, full-stack JSON utility tool built with the MERN stack. Format, validate, minify, and save your JSON snippets with ease.
+JSONfy is a premium, full-stack developer workspace built on the MERN stack. Designed with beautiful glassmorphism aesthetic guidelines, it lets you format, validate, minify, and store your API JSON payloads seamlessly in a secure and modern environment.
 
 ---
 
 ## ✨ Features
 
-- 🛠 **JSON Formatting**: Prettify messy JSON with standard 2-space indentation.
-- ✅ **Validation**: Instant validation with detailed error messages for malformed JSON.
-- ⚡ **Minification**: Compress JSON data for smaller storage/transmission.
-- 💾 **Persistence**: Save important snippets to a MongoDB database for future reference.
-- 🕒 **History Tracking**: Sidebar history to quickly reload or delete previous snippets.
-- 📊 **Real-time Stats**: Track character count, line count, and data size as you type.
-- 📋 **One-click Copy**: Copy formatted/minified output directly to your clipboard.
-- 🌓 **Dark/Light Mode**: Toggle between premium dark and light themes with smooth transitions and persistence.
-- 🎨 **Modern UI**: Sleek, responsive design built with React and Vanilla CSS, supporting multiple themes.
+- 🛠 **Drag & Drop File Uploads**: Simply drop any `.json` or `.txt` file directly onto the console to load and edit it instantly.
+- 🎨 **Premium Modern UI**: Sleek, responsive layout built with glassmorphic cards, harmonized theme tokens, and dynamic micro-animations.
+- 🌓 **Persistent Dark/Light Mode**: Toggle between premium custom-themed visual environments with smooth ease transitions and local storage remembrance.
+- ✅ **RFC Schema Validation**: Instant linter validation checking JSON structure compliance, returning clean success badges or detailed inline syntax error reports.
+- ⚡ **Ultra-Dense Minification**: Strips blank spaces and line breaks instantly to compress data payloads for efficient API request testing.
+- 💾 **MERN Database persistence**: Give names to your clean snippets and save them directly to a persistent MongoDB database.
+- 🕒 **Sliding Drawer Sidebar**: Slides in seamlessly from the right to quickly view, load, or delete previous snippets from your history collection.
+- 📊 **Real-time Live Metrics**: Tracks and logs character counts, total lines, and exact file size in bytes dynamically as you type.
+- 📋 **One-click Clipboard Copy**: Instantly copy console output blocks to your clipboard with clean alert notification popups.
+- 🔗 **Clean 3-Column Footer**: Modern deep-slate footer grouping navigation, features, and platform legal items beautifully.
 
 ---
 
 ## 🚀 Tech Stack
 
 ### Frontend
-- **React** (Vite)
-- **Lucide React** (Icons)
-- **Axios** (API Requests)
-- **CSS3** (Custom Modern Design)
+- **React** (Vite Dev Server)
+- **Lucide React** (Modern Vector Icon Library)
+- **Axios** (Backend API Integrations)
+- **Vanilla CSS3** (Curated custom-themed styles)
 
 ### Backend
 - **Node.js**
-- **Express**
-- **Mongoose** (ODM)
+- **Express.js** (REST API Controller Router)
+- **Mongoose ODM** (MongoDB Schema Modeler)
 
 ### Database
-- **MongoDB** (Cloud or Local)
+- **MongoDB** (Cloud Atlas or Local Server Instance)
 
 ---
 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) installed
-- [MongoDB](https://www.mongodb.com/) instance (Local or Atlas)
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [MongoDB](https://www.mongodb.com/) (Local server or Cloud Atlas cluster)
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/json-formatter-mern.git
+git clone https://github.com/NirjanBarik/json-formatter-mern.git
 cd json-formatter-mern
 ```
 
-### 2. Install Dependencies
+### 2. Install Project Dependencies
 ```bash
-# Install root dependencies
+# Install root script orchestrators (concurrently)
 npm install
 
-# Install client dependencies
+# Install client packages
 cd client && npm install
 
-# Install server dependencies
+# Install server packages
 cd ../server && npm install
 ```
 
-### 3. Environment Configuration
-Create a `.env` file in the `server` directory:
+### 3. Backend Environment Configuration
+Create a `.env` file in the `/server` folder:
 ```env
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 ```
 
-### 4. Run the Application
-From the **root directory**, run:
+### 4. Run Development Servers
+From the **root directory** of the repository, execute:
 ```bash
 npm run dev
 ```
-This will start both the client (Vite) and the server (Express) concurrently.
+This triggers both the backend node server (listening on port `5000`) and the Vite client dev server (running on `http://localhost:5173/`) concurrently.
 
 ---
 
----
+## 🖥️ Workspace Console Guide
 
-## 🆕 Recent Updates
-
-### 🌓 Dark/Light Mode Toggle
-We've added a highly requested theme toggle feature!
-- **Smooth Transitions**: Enjoy a premium feel with 0.3s ease transitions between themes.
-- **Preference Persistence**: Your choice is saved in `localStorage`, so it's remembered every time you visit.
-- **Optimized Visibility**: Both themes are carefully crafted for maximum readability and eye comfort.
-
-![Theme Toggle Demo](./assets/theme-toggle-demo.webp)
+1. **Paste/Load JSON:** Paste raw text into the input workspace, click the `[Load Sample]` link to test standard structures, or drag a `.json` file from your desktop.
+2. **Execute Operation:** Trigger **Format JSON**, **Validate Payload**, or **Minify Output** buttons instantly.
+3. **Inspect Output:** View perfectly indented JSON strings or precise schema validation syntax error flags.
+4. **Persist Logs:** Click **Save Snippet** to store the template in MongoDB. Reload previous entries at any time using the database history drawer in the navbar.
 
 ---
 
-## 🖥️ Usage
+## 🌐 Production Deployment
 
-1. Paste your JSON data into the **Input** panel.
-2. Use the **Format**, **Validate**, or **Minify** buttons to process the data.
-3. View the results in the **Output** panel.
-4. Click **Save Snippet** to store the JSON for later use.
-5. Access your saved snippets from the **History** sidebar on the right.
-
----
-
-## 🌐 Deployment
-
-### Backend (Render)
-1. Create a new **Web Service** on [Render](https://render.com/).
-2. Connect your GitHub repository.
-3. Set the following configurations:
+### Backend (Render Web Service)
+1. Register a new **Web Service** on [Render](https://render.com/).
+2. Select your GitHub repository.
+3. Configure the following build guidelines:
    - **Root Directory**: `server`
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
-4. Add **Environment Variables**:
-   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+4. Add the following **Environment Variables**:
+   - `MONGODB_URI`: Your MongoDB Atlas URI.
 
-### Frontend (Vercel)
-1. Create a new project on [Vercel](https://vercel.com/).
+### Frontend (Vercel Host)
+1. Add a new project on [Vercel](https://vercel.com/).
 2. Connect your GitHub repository.
-3. Set the following configurations:
+3. Configure the following project parameters:
    - **Framework Preset**: `Vite`
    - **Root Directory**: `client`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-4. Add **Environment Variable**:
-   - `VITE_API_URL`: The URL of your deployed Render backend (e.g., `https://your-api.onrender.com/api`).
-
----
-
-## 📸 Screenshots
-
-### Dark Mode
-![Dark Mode Screenshot](./assets/dark-mode.png)
-
-### Light Mode
-![Light Mode Screenshot](./assets/light-mode.png)
+4. Add the following **Environment Variable**:
+   - `VITE_API_URL`: Your live Render API URL (e.g., `https://your-api.onrender.com/api`).
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have suggestions for new features or improvements, feel free to open an issue or submit a pull request.
+Contributions are welcome! If you have suggestions or want to report bugs, feel free to open an issue or submit a pull request:
 
-1. Fork the Project
+1. Fork this Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
@@ -157,6 +133,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📧 Contact
 
-Email - nirjanbarik1@gmail.com
+**Nirjan Barik** - nirjanbarik1@gmail.com
 
 Project Link: [https://github.com/NirjanBarik/json-formatter-mern](https://github.com/NirjanBarik/json-formatter-mern)
