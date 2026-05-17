@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="footer-brand">
                     <a href="#" className="footer-logo">
                         <Sparkles size={24} style={{ color: 'var(--brand-primary)' }} />
-                        <span>JSONfy</span>
+                        <span>Josify</span>
                     </a>
                     <p className="footer-tagline">
                         Redesigning developer productivity. Clean, optimize, inspect, and parse your API integrations directly within a secure, responsive environment.
@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
 
             <div className="container footer-bottom">
-                <p>&copy; {currentYear} JSONfy. Open Source under MIT License.</p>
+                <p>&copy; {currentYear} Josify. Open Source under MIT License.</p>
                 <p style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                     Crafted with 
                     <Heart size={14} style={{ color: 'var(--error)', fill: 'var(--error)' }} />

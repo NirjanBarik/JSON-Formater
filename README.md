@@ -1,8 +1,8 @@
-# ⚡ JSONfy - Premium JSON Formatter & Validator
+# ⚡ Josify - Premium JSON Formatter & Validator
 
-![JSONfy Redesigned Console](./assets/dashboard-redesign.png)
+![Josify Redesigned Console](./assets/dashboard-redesign.png)
 
-JSONfy is a premium, full-stack developer workspace built on the MERN stack. Designed with beautiful glassmorphism aesthetic guidelines, it lets you format, validate, minify, and store your API JSON payloads seamlessly in a secure and modern environment.
+Josify is a premium, full-stack developer workspace built on the MERN stack. Designed with beautiful glassmorphism aesthetic guidelines, it lets you format, validate, minify, and store your API JSON payloads seamlessly in a secure and modern environment.
 
 ---
 

@@ -22,7 +22,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenDrawer }) {
             <div className="container">
                 <a href="#" className="logo">
                     <Sparkles size={24} style={{ color: 'var(--brand-primary)' }} />
-                    <span>JSONfy</span>
+                    <span>Josify</span>
                 </a>
 
                 <ul className="nav-links">

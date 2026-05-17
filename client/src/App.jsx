@@ -270,7 +270,7 @@ function App() {
     const loadSampleJSON = (e) => {
         e.preventDefault();
         const sample = {
-            appName: "JSONfy Premium Formatter",
+            appName: "Josify Premium Formatter",
             version: 2.0,
             status: "online",
             license: "MIT",
