@@ -10,8 +10,8 @@ const snippetSchema = new mongoose.Schema({
     required: true
   },
   stats: {
-    chars: Number,
-    lines: Number,
+    chars: String,
+    lines: String,
     size: String
   },
   createdAt: {

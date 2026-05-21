@@ -81,11 +81,22 @@ function App() {
     }, [input]);
 
     const fetchHistory = async () => {
+        let localSnippets = [];
+        try {
+            const localData = localStorage.getItem('local_snippets');
+            if (localData) {
+                localSnippets = JSON.parse(localData);
+            }
+        } catch (e) {
+            console.error('Local storage error', e);
+        }
+
         try {
             const response = await axios.get(`${API_BASE_URL}/snippets`);
-            setHistory(response.data);
+            setHistory([...response.data, ...localSnippets]);
         } catch (error) {
             console.error('Error fetching history snippets:', error);
+            setHistory(localSnippets);
         }
     };
 
@@ -166,16 +177,41 @@ function App() {
             const defaultName = `Snippet ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
             const name = prompt('Name your saved JSON snippet:', defaultName) || 'Untitled JSON';
             
-            await axios.post(`${API_BASE_URL}/snippets`, {
+            let savedToDB = false;
+            try {
+                await axios.post(`${API_BASE_URL}/snippets`, {
+                    name,
+                    content: input,
+                    stats
+                });
+                savedToDB = true;
+            } catch (dbError) {
+                console.error('Failed to save to DB:', dbError);
+            }
+
+            // Save to localStorage as well
+            const newSnippet = {
+                _id: 'local_' + Date.now(),
                 name,
                 content: input,
-                stats
-            });
+                stats,
+                isLocal: true,
+                createdAt: new Date().toISOString()
+            };
+            
+            const localData = localStorage.getItem('local_snippets');
+            let localSnippets = localData ? JSON.parse(localData) : [];
+            localSnippets.push(newSnippet);
+            localStorage.setItem('local_snippets', JSON.stringify(localSnippets));
+            
             fetchHistory();
-            alert('Snippet saved successfully to your History Database!');
+            if (savedToDB) {
+                alert('Snippet saved successfully to both Cloud and Local Device!');
+            } else {
+                alert('Backend not reachable. Snippet saved to Local Device Storage only!');
+            }
         } catch (error) {
             console.error('Failed to save snippet:', error);
-            alert('Failed to connect to the MERN backend API. Is the server running?');
         } finally {
             setIsLoading(false);
         }
@@ -214,11 +250,24 @@ function App() {
     const deleteSnippet = async (id, e) => {
         e.stopPropagation();
         if (!confirm('Are you sure you want to permanently delete this saved snippet?')) return;
+        
+        if (typeof id === 'string' && id.startsWith('local_')) {
+            const localData = localStorage.getItem('local_snippets');
+            if (localData) {
+                let localSnippets = JSON.parse(localData);
+                localSnippets = localSnippets.filter(s => s._id !== id);
+                localStorage.setItem('local_snippets', JSON.stringify(localSnippets));
+            }
+            fetchHistory();
+            return;
+        }
+
         try {
             await axios.delete(`${API_BASE_URL}/snippets/${id}`);
             fetchHistory();
         } catch (error) {
             console.error('Error deleting snippet:', error);
+            alert('Failed to delete snippet from database.');
         }
     };
 
