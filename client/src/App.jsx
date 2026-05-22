@@ -412,7 +412,7 @@ function App() {
                                     className="editor-textarea"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
-                                    placeholder='Paste JSON here or upload a file. Example:&#10;{ "name": "Nirjan", "age": 22, "city": "Bhubaneswar" }'
+                                    placeholder='Paste JSON here or upload a file. Example:&#10;{ "name": "Akash", "age": 18, "city": "Delhi" }'
                                 />
                             </div>
 
