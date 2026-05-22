@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import html2canvas from 'html2canvas';
 import { 
     Code, 
     FileJson, 
@@ -199,38 +198,16 @@ function App() {
                 isLocal: true,
                 createdAt: new Date().toISOString()
             };
-            
-            const localData = localStorage.getItem('local_snippets');
+                       const localData = localStorage.getItem('local_snippets');
             let localSnippets = localData ? JSON.parse(localData) : [];
             localSnippets.push(newSnippet);
             localStorage.setItem('local_snippets', JSON.stringify(localSnippets));
-            
-            // Generate Screenshot of output and download to local storage (hard drive)
-            const outputElement = document.querySelector('.output-viewer');
-            if (outputElement) {
-                try {
-                    const canvas = await html2canvas(outputElement, {
-                        backgroundColor: document.body.classList.contains('dark-mode') ? '#131c31' : '#ffffff',
-                        scale: 2 // High resolution
-                    });
-                    const image = canvas.toDataURL("image/png");
-                    
-                    const link = document.createElement('a');
-                    link.href = image;
-                    link.download = `${name.replace(/\s+/g, '_')}_snippet.png`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                } catch (err) {
-                    console.error("Screenshot failed", err);
-                }
-            }
 
             fetchHistory();
             if (savedToDB) {
-                alert('Snippet saved successfully to both Cloud and downloaded as a Screenshot to your local storage!');
+                alert('Snippet saved successfully to Cloud and Browser History!');
             } else {
-                alert('Backend not reachable. Snippet saved to Browser History and downloaded as a Screenshot to your device!');
+                alert('Backend not reachable. Snippet saved to Browser History!');
             }
         } catch (error) {
             console.error('Failed to save snippet:', error);
